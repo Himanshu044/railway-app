@@ -1,9 +1,15 @@
 package main
 
-import(
+import (
+	"backend/helpers"
+	"backend/routes"
+
 	"github.com/gin-gonic/gin"
 )
 
-func main(){
-
+func main() {
+	router := gin.Default()
+	routes.SetupRoutes(router)
+	helpers.LoadEnvVariables()
+	router.Run()
 }

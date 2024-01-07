@@ -2,6 +2,7 @@ package routes
 
 import (
 	"backend/controllers"
+	"backend/helpers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,6 +10,6 @@ import (
 func SetupTrainRoutes(router *gin.Engine) {
 	trainGroup := router.Group("/trains")
 	{
-		trainGroup.GET("/", controllers.GetTrains)
+		trainGroup.GET("/", helpers.RequireAuth, controllers.GetTrains)
 	}
 }
